@@ -1,0 +1,11 @@
+#!/bin/sh
+
+status=$(nordvpn status | awk '/Status/ {print $2}')
+
+if [ "$status" == "Connected" ]; then
+    echo '%{F#388e3c}%{F-}'
+elif [ "$status" == "Disconnected" ]; then
+    echo '%{F#d32f2f}%{F-}'
+else
+    echo '%{F#fbc02d}%{F-}'
+fi

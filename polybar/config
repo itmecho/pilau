@@ -1,0 +1,173 @@
+[colours]
+background = #88000000
+background-alt = #444
+text = #dfdfdf
+text-alt = #666
+primary = #388e3c
+alert = #ff0000
+
+[bar/main]
+modules-left = i3
+modules-center = date
+modules-right = pulseaudio
+
+height = 27
+
+background = ${colours.background}
+foreground = ${colours.text}
+
+border-size = 4
+border-color = #00000000
+
+radius = 3.0
+
+font-0 = Roboto:pixelsize=10
+font-1 = "Font Awesome 5 Free Regular:size=10"
+font-2 = "Font Awesome 5 Free Solid:size=10"
+font-3 = "Font Awesome 5 Brands Regular:size=10"
+
+line-size = 3
+
+module-margin-left = 1
+module-margin-right = 2
+
+padding-left = 0
+padding-right = 4
+
+tray-position = right
+tray-padding = 4
+
+[bar/bottom]
+bottom = true
+modules-left = vpn
+modules-right = eth eth-down eth-up cpu memory
+
+background = ${colours.background}
+foreground = ${colours.text}
+
+border-size = 4
+border-color = #00000000
+
+radius = 3.0
+
+font-0 = Roboto:size=10;2
+font-1 = "Font Awesome 5 Free Regular:size=10;1"
+font-2 = "Font Awesome 5 Free Solid:size=10;1"
+font-3 = "Font Awesome 5 Brands Regular:size=10;1"
+
+line-size = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+padding-left = 4
+padding-right = 4
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+
+label-mode-padding = 3
+label-mode-foreground = #000
+label-mode-background = ${colours.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colours.background}
+label-focused-underline= ${colours.primary}
+label-focused-padding = ${self.label-mode-padding}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-foreground = ${colours.text-alt}
+label-unfocused-padding = ${self.label-mode-padding}
+label-unfocused-underline= ${colours.background-alt}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colours.alert}
+label-urgent-padding = ${self.label-mode-padding}
+
+[module/date]
+type = internal/date
+interval = 1.0
+label = %date% %time%
+
+date = %a %d %b
+time = %H:%M:%S
+
+date-alt = %Y-%m-%d
+time-alt = %H:%M:%S
+
+[module/vpn]
+type = custom/script
+
+exec = $HOME/.config/polybar/scripts/vpn
+click-left = $HOME/.config/polybar/scripts/toggle-vpn
+
+interval = 5
+
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected-prefix = " "
+label-connected = %local_ip%
+
+[module/eth-down]
+type = internal/network
+interface = eno1
+interval = 1.0
+
+format-connected-prefix = " "
+label-connected = %downspeed%
+
+[module/eth-up]
+type = internal/network
+interface = eno1
+interval = 1.0
+
+format-connected-prefix = " "
+label-connected = %upspeed%
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = false
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colours.primary}
+format-muted-underline = ${colours.background-alt}
+label-volume =  %percentage%%
+label-volume-foreground = ${colours.text}
+
+label-muted =  %percentage%% 
+label-muted-foreground = #666
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colours.text}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colours.text}
+label = %percentage_used%%

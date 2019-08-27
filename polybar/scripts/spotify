@@ -1,0 +1,13 @@
+#!/bin/sh
+
+status=$(playerctl status)
+
+echo -n " "
+
+if [[ "$status" == "Playing" ]] || [[ "$status" == "Paused" ]]; then
+    title=$(playerctl metadata title)
+    artist=$(playerctl metadata artist)
+    echo "$title - $artist"
+else
+    echo "Nothing playing"
+fi

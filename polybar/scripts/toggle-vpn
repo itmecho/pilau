@@ -1,0 +1,9 @@
+#!/bin/sh
+
+status=$(nordvpn status | awk '/Status/ {print $2}')
+
+if [ "$status" == "Connected" ]; then
+    nordvpn d &>/dev/null
+else
+    nordvpn c sweden &>/dev/null
+fi
