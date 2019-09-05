@@ -28,5 +28,5 @@ cd ~/.pilau
 
 ## Screenshots
 
-![alt text](https://raw.githubusercontent.com/itmecho/pilau/master/Screenshot-2019-09-05_184825.png)
-![alt text](https://raw.githubusercontent.com/itmecho/pilau/master/Screenshot-2019-09-05_184845.png)
+![Terminals](https://raw.githubusercontent.com/itmecho/pilau/master/Screenshot-2019-09-05_184825.png)
+![Firefox](https://raw.githubusercontent.com/itmecho/pilau/master/Screenshot-2019-09-05_184845.png)
