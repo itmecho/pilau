@@ -126,8 +126,8 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-bindsym --release Print exec "scrot -m '/home/iain/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png'"
-bindsym --release Shift+Print exec "scrot -s '/home/iain/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png'"
+bindsym --release Print exec "scrot -m $HOME/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png"
+bindsym --release Shift+Print exec "scrot -s $HOME/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png"
 
 for_window [class=".*"] border pixel 0
 gaps inner 20
