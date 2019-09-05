@@ -1,43 +1,32 @@
-/*
- * ROFI One Dark
- *
- * Based on OneDark.vim (https://github.com/joshdick/onedark.vim)
- *
- * Author: Benjamin Stauss
- * User: me-benni
- *
- */
-
-
 * {
   black:      #000000;
-  red:        #eb6e67;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #6eaafb;
-  mangenta:   #d886f3;
-  cyan:       #6cdcf7;
-  emphasis:   #2d7a36;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  fg:         #abb2bf;
-  bg:         #282c34;
+  red:        #bf616a;
+  green:      #a3be8c;
+  yellow:     #ebcb8b;
+  blue:       #5e81ac;
+  mangenta:   #b48ead;
+  cyan:       #88c0d0;
+  emphasis:   #8fbcbb;
+  text:       #2e3440;
+  text-alt:   #e5e9f0;
+  fg:         #d8dee9;
+  bg:         #2e3440ee;
 
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "Roboto 14";
   text-color: @text;
 }
 
 window {
   transparency: "real";
   fullscreen: true;
-  background-color: #282c34dd;
+  background-color: @bg;
 }
 
 mainbox {
-  padding: 30% 30%;
+  padding: 30% 25%;
 }
 
 inputbar {
@@ -56,6 +45,7 @@ textbox-prompt-colon {
 }
 
 entry {
+  text-color: @text-alt;
   margin: 0px 10px;
 }
 
@@ -66,9 +56,9 @@ listview {
 }
 
 element {
-  padding: 5px;
+  padding: 10px;
   text-color: @text-alt;
-  highlight: bold #95ee8f; /* green */
+  highlight: @blue;
   border-radius: 3px;
 }
 

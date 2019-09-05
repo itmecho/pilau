@@ -54,11 +54,11 @@ bindsym $mod+space focus mode_toggle
 
 bindsym $mod+a focus parent
 
-set $ws1 "1:  Web"
-set $ws2 "2:  Music"
-set $ws3 "3:  Terminals"
-set $ws4 "4:  Slack"
-set $ws5 "5:  Steam"
+set $ws1 "1:   1"
+set $ws2 "2:   2"
+set $ws3 "3:   3"
+set $ws4 "4:   4"
+set $ws5 "5:   5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -112,7 +112,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Colours
-set $highlight-color     #2d7a36
+set $highlight-color     #B2535B
 set $bg-color 	         #222222
 set $inactive-bg-color   #111111
 set $text-color          #f3f4f5
@@ -126,13 +126,17 @@ client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-co
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-for_window [class=".*"] border pixel 1
+bindsym --release Print exec "scrot -m '/home/iain/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png'"
+bindsym --release Shift+Print exec "scrot -s '/home/iain/Pictures/Screenshot-%Y-%m-%d_%H%M%S.png'"
+
+for_window [class=".*"] border pixel 0
 gaps inner 20
 smart_borders on
 
 # Applications
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
+#exec_always --no-startup-id feh --bg-scale $HOME/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/Pictures/arch.png
 exec_always --no-startup-id pkill compton; compton -f
 exec_always --no-startup-id pkill nm-applet; nm-applet
 

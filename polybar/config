@@ -1,22 +1,54 @@
 [colours]
-background = #88000000
+background = #00000000
 background-alt = #444
-text = #dfdfdf
-text-alt = #666
-primary = #388e3c
-alert = #ff0000
+text = #eceff4
+text-alt = #4c566a
+primary = #88c0d0
+alert = #bf616a
 
 [bar/main]
-modules-left = i3
+modules-left = i3 xwindow
 modules-center = date
-modules-right = pulseaudio
-
-height = 27
+modules-right = cpu memory
+tray-position = right
+tray-padding = 8
 
 background = ${colours.background}
 foreground = ${colours.text}
 
-border-size = 4
+border-top-size = 20
+border-bottom-size = 0
+border-right-size = 20
+border-left-size = 20
+border-color = #00000000
+
+font-0 = Roboto:size=10;2
+font-1 = "Font Awesome 5 Free Regular:size=10;1"
+font-2 = "Font Awesome 5 Free Solid:size=10;1"
+font-3 = "Font Awesome 5 Brands Regular:size=10;1"
+
+line-size = 0
+
+module-margin-left = 1
+module-margin-right = 2
+
+
+[bar/bottom]
+bottom = true
+modules-left = vpn pulseaudio
+modules-right = eth
+
+height = 27
+
+cursor-click = pointer
+
+background = ${colours.background}
+foreground = ${colours.text}
+
+border-top-size = 0
+border-bottom-size = 20
+border-right-size = 20
+border-left-size = 20
 border-color = #00000000
 
 radius = 3.0
@@ -25,35 +57,6 @@ font-0 = Roboto:pixelsize=10
 font-1 = "Font Awesome 5 Free Regular:size=10"
 font-2 = "Font Awesome 5 Free Solid:size=10"
 font-3 = "Font Awesome 5 Brands Regular:size=10"
-
-line-size = 3
-
-module-margin-left = 1
-module-margin-right = 2
-
-padding-left = 0
-padding-right = 4
-
-tray-position = right
-tray-padding = 4
-
-[bar/bottom]
-bottom = true
-modules-left = vpn
-modules-right = eth eth-down eth-up cpu memory
-
-background = ${colours.background}
-foreground = ${colours.text}
-
-border-size = 4
-border-color = #00000000
-
-radius = 3.0
-
-font-0 = Roboto:size=10;2
-font-1 = "Font Awesome 5 Free Regular:size=10;1"
-font-2 = "Font Awesome 5 Free Solid:size=10;1"
-font-3 = "Font Awesome 5 Brands Regular:size=10;1"
 
 line-size = 0
 
@@ -77,6 +80,7 @@ label-mode-background = ${colours.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %name%
 label-focused-background = ${colours.background}
+label-focused-foreground = #bf616a
 label-focused-underline= ${colours.primary}
 label-focused-padding = ${self.label-mode-padding}
 
@@ -122,23 +126,7 @@ interface = eno1
 interval = 3.0
 
 format-connected-prefix = " "
-label-connected = %local_ip%
-
-[module/eth-down]
-type = internal/network
-interface = eno1
-interval = 1.0
-
-format-connected-prefix = " "
-label-connected = %downspeed%
-
-[module/eth-up]
-type = internal/network
-interface = eno1
-interval = 1.0
-
-format-connected-prefix = " "
-label-connected = %upspeed%
+label-connected = %local_ip%   %downspeed%   %upspeed%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -171,3 +159,11 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colours.text}
 label = %percentage_used%%
+
+[module/xwindow]
+type = internal/xwindow
+format-foreground = ${colours.text}
+label = %title%
+label-maxlen = 80
+
+; vim:ft=dosini
